@@ -1,0 +1,244 @@
+ /* Resetea todos los márgenes, paddings y define box-sizing uniforme */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+/* Estilos del cuerpo de la página */
+body {
+    background: radial-gradient(ellipse at center,);
+    background-color: #800909;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: rgb(238, 106, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    /* Para que responda a :hover y :active */
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #b30000;
+}
+.btn:active {
+    background-color: #940000;
+}
+/* Estilos base para todos los corazones */
+.heart {
+    position: absolute;
+    font-size: 35px;
+    animation: rise linear infinite;
+    opacity: 0.9;
+    user-select: none;
+    pointer-events: none;
+    bottom: -80px;
+    filter: blur(0.2px);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    will-change: transform, opacity;
+}
+.heart::before {
+    content: '❤';
+    text-shadow: 0 0 15px currentColor;
+}
+/* Animación keyframe que hace que los corazones suban */
+@keyframes rise {
+    0% {
+        transform: translateY(100px) rotate(0deg) scale(0.8);
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% {
+        transform: translateY(calc(-100vh - 150px)) rotate(360deg) scale(1.2);
+        opacity: 0;
+    }
+}
+/* Animación keyframe para movimiento lateral oscilante */
+@keyframes sway {
+    0%, 100% {
+        transform: translateX(0px);
+    }
+    25% {
+        transform: translateX(-15px);
+    }
+    75% {
+        transform: translateX(15px);
+    }
+}
+.heart.sway {
+    animation: rise linear infinite, sway 3s ease-in-out infinite;
+}
+/* Diferentes colores de corazones */
+.heart.hot-pink { color: #ff1493; }
+.heart.bright-pink { color: #ff69af; }
+.heart.light-pink { color: #ffb6c1; }
+.heart.deep-pink { color: #dc143c; }
+.heart.coral-pink { color: #ff69b4; }
+.heart.white-pink { color: #ffc0cb; }
+/* Tamaños de corazones */
+.heart.large { font-size: 45px; }
+.heart.medium { font-size: 35px; }
+.heart.small { font-size: 25px; }
+.heart.extra-large { font-size: 55px; }
+/* NUEVO: Contenedor del mensaje de amor */
+.love-message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    text-align: center;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+/* Animación de latido para el mensaje */
+@keyframes heartbeat {
+    0%, 100% {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+}
+/* Estilos del mensaje principal */
+.love-message {
+    color: #ffffff;
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.2;
+}
+/* Estilos del submensaje */
+.love-submessage {
+    color: #ffb6c1;
+    font-size: 1.2rem;
+    font-style: italic;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    margin-bottom: 10px;
+    width: 500px;
+}
+/* Corazón decorativo en el mensaje */
+.message-heart {
+    font-size: 3rem;
+    color: #ff1493;
+    animation: pulse 1.5s ease-in-out infinite;
+    display: inline-block;
+    margin: 10px 0;
+}
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+}
+/* Responsive Design para móviles pequeños */
+@media (max-width: 480px) {
+    .heart {
+        font-size: 30px;
+    }
+    .heart.large { font-size: 40px; }
+    .heart.medium { font-size: 30px; }
+    .heart.small { font-size: 20px; }
+    .heart.extra-large { font-size: 50px; }
+    .love-message-container {
+        padding: 20px;
+        max-width: 95%;
+        margin: 0 10px;
+    }
+    .love-message {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+    .love-submessage {
+        font-size: 1rem;
+        margin-bottom: 8px;
+        width: auto;
+    }
+    .message-heart {
+        font-size: 2.2rem;
+        margin: 8px 0;
+    }
+}
+/* Responsive Design para móviles medianos */
+@media (min-width: 481px) and (max-width: 767px) {
+    .love-message-container {
+        padding: 25px;
+        max-width: 85%;
+    }
+    .love-message {
+        font-size: 2.2rem;
+    }
+    .love-submessage {
+        font-size: 1.1rem;
+        width: 100px;
+    }
+    .message-heart {
+        font-size: 2.5rem;
+    }
+}
+/* Responsive Design para tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .heart {
+        font-size: 40px;
+    }
+    .heart.large { font-size: 55px; }
+    .heart.medium { font-size: 40px; }
+    .heart.small { font-size: 30px; }
+    .heart.extra-large { font-size: 70px; }
+    .love-message-container {
+        padding: 35px;
+        max-width: 70%;
+    }
+    .love-message {
+        font-size: 2.8rem;
+    }
+    .love-submessage {
+        font-size: 1.3rem;
+        width: 200px;
+    }
+    .message-heart {
+        font-size: 3.2rem;
+    }
+}
+/* Responsive Design para pantallas grandes */
+@media (min-width: 1025px) {
+    .love-message-container {
+        padding: 40px;
+        max-width: 60%;
+    }
+    .love-message {
+        font-size: 3rem;
+    }
+    .love-submessage {
+        font-size: 1.4rem;
+        width: 300px;
+    }
+    .message-heart {
+        font-size: 3.5rem;
+    }
+}

@@ -1,0 +1,230 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: "Inconsolata", monospace;
+    display: flex;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background-color: #fff4f3;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5em 1em;
+    background-color: rgb(238, 106, 128);
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: center;
+    /* Para que responda a :hover y :active */
+    transition: background-color 0.2s;
+}
+
+.btn:hover {
+    background-color: #b30000;
+}
+.btn:active {
+    background-color: #940000;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+#area-mensaje {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+}
+
+#mensaje-principal {
+    font-family: monospace;
+    white-space: pre;
+    font-size: 16px;
+    line-height: 1.4;
+    width: 100%;
+    overflow-x: auto;
+}
+
+#area-corazon {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-height: 400px;
+}
+
+#heart-container {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    height: 400px;
+    text-align: center;
+}
+
+#mensaje-corazon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    text-align: center;
+    z-index: 2;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: clamp(18px, 4vw, 30px);
+    display: none;
+    animation: fadeIn 2s ease-in forwards;
+    padding: 10px;
+}
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+#love-counter {
+    font-size: clamp(20px, 5vw, 30px);
+    margin: 10px 0;
+    word-wrap: break-word;
+}
+.mensaje-corazon-p1,
+.mensaje-corazon-p2 {
+    margin: 10px 0;
+    word-wrap: break-word;
+}
+
+.time {
+    font-size: clamp(12px, 3vw, 16px);
+    margin: 0 4px 0 2px;
+    opacity: 0.8;
+}
+
+.comment {
+    color: #4CAF50;
+}
+
+.str {
+    color: #3F51B5;
+}
+.emoji{
+    color: red;
+}
+.heart-emoji {
+    position: absolute;
+    font-size: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+    .container {
+        flex-direction: column;
+        padding: 10px;
+        gap: 10px;
+    }
+    #area-mensaje,
+    #area-corazon {
+        flex: none;
+        padding: 10px;
+        min-height: auto;
+    }
+    #mensaje-principal {
+        font-size: 14px;
+        line-height: 1.3;
+    }
+    #heart-container {
+        width: 100%;
+        max-width: 300px;
+        height: 300px;
+    }
+    #mensaje-corazon {
+        font-size: clamp(16px, 5vw, 24px);
+        width: 95%;
+    }
+    #love-counter {
+        font-size: clamp(18px, 6vw, 24px);
+        line-height: 1.2;
+    }
+    .time {
+        font-size: clamp(10px, 3vw, 14px);
+        display: inline-block;
+        margin: 0 2px;
+    }
+    .heart-emoji {
+        font-size: 16px;
+    }
+}
+@media (max-width: 480px) {
+    .container {
+        padding: 5px;
+    }
+    #area-mensaje,
+    #area-corazon {
+        padding: 5px;
+    }
+    #mensaje-principal {
+        font-size: 12px;
+        line-height: 1.2;
+    }
+    #heart-container {
+        max-width: 250px;
+        height: 250px;
+    }
+    #mensaje-corazon {
+        font-size: clamp(14px, 5vw, 20px);
+    }
+    #love-counter {
+        font-size: clamp(16px, 6vw, 20px);
+    }
+    .time {
+        font-size: clamp(9px, 3vw, 12px);
+    }
+    .heart-emoji {
+        font-size: 14px;
+    }
+}
+/* Para pantallas muy pequeñas */
+@media (max-width: 320px) {
+    #heart-container {
+        max-width: 200px;
+        height: 200px;
+    }
+    .heart-emoji {
+        font-size: 12px;
+    }
+}
+/* Para orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        flex-direction: row;
+    }
+    .container {
+        flex-direction: row;
+    }
+    #area-mensaje,
+    #area-corazon {
+        flex: 1;
+    }
+    #heart-container {
+        max-width: 250px;
+        height: 250px;
+    }
+    }
